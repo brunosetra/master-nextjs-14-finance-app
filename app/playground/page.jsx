@@ -6,7 +6,11 @@ import Button from "@/components/button";
 import Label from "@/components/label";
 import Input from "@/components/input";
 import Select from "@/components/select";
+import Skeleton from "@/components/skeleton";
 
+export const metadata = {
+  title: "Playground",
+};
 export default function Page() {
   return (
     <main className="space-y-8 mb-44">
@@ -121,6 +125,14 @@ export default function Page() {
               Accept terms
             </Label>
           </div>
+        </div>
+      </div>
+      <div>
+        <h2 className="mb-4 text-lg font-mono">Loading Skeleton</h2>
+        <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+        <div className="flex gap-3 items-center">
+          <Skeleton className="w-6 h-6 rounded-full" />
+          <Skeleton />
         </div>
       </div>
     </main>

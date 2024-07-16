@@ -1,28 +1,62 @@
 {
-    "transactions": [
-      {
-        "id": 1,
-        "amount": 100,
-        "type": "Expense",
-        "description": "Restaurant",
-        "category": "Food",
-        "created_at": "2023-03-15T23:00:00"
-      },
-      {
-        "id": 2,
-        "amount": 159,
-        "type": "Expense",
-        "description": "Gas",
-        "category": "Car",
-        "created_at": "2023-03-15T23:00:00"
-      },
-      {
-        "id": 3,
-        "amount": 500,
-        "type": "Income",
-        "description": "Salary",
-        "category": "",
-        "created_at": "2023-03-15T23:00:00"
-      }
-    ]
-  }
+  "transactions": [
+    {
+      "id": 1,
+      "amount": 100,
+      "type": "Expense",
+      "description": "Restaurant",
+      "category": "Food",
+      "created_at": "2023-03-15T23:00:00"
+    },
+    {
+      "id": 2,
+      "amount": 159,
+      "type": "Expense",
+      "description": "Gas",
+      "category": "Car",
+      "created_at": "2023-03-15T23:00:00"
+    },
+    {
+      "id": 3,
+      "amount": 500,
+      "type": "Income",
+      "description": "Salary",
+      "category": "",
+      "created_at": "2023-03-15T23:00:00"
+    },
+    {
+      "id": 4,
+      "amount": 99,
+      "type": "Expense",
+      "description": "Rent",
+      "category": "",
+      "created_at": "2023-03-16T23:00:00"
+    }
+  ],
+  "trends": [
+    {
+      "id": "Income",
+      "amount": 2000,
+      "prevAmount": 3000,
+      "type": "Income"
+    },
+    {
+      "id": "Expense",
+      "amount": 2000,
+      "prevAmount": 3000,
+      "type": "Expense"
+    },
+    {
+      "id": "Saving",
+      "amount": 2000,
+      "prevAmount": 3000,
+      "type": "Saving"
+    },
+    {
+      "id": "Investiment",
+      "amount": 4000,
+      "prevAmount": 3000,
+      "type": "Investiment"
+    }
+  ]
+}
