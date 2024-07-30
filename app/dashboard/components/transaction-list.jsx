@@ -1,5 +1,6 @@
 import TransactionItem from "@/components/transaction-item";
 import TransactionSummaryItem from "@/components/transaction-summary-item";
+import { createClient } from "@/lib/supabase/server";
 
 const groupAnsSumTransactionByDate = (transactions) => {
   const grouped = {};
@@ -18,10 +19,12 @@ const groupAnsSumTransactionByDate = (transactions) => {
 };
 
 export default async function TransactionList() {
-  const response = await fetch("http://localhost:3100/transactions", {
-    cache: "no-store",
-  });
-  const transactions = await response.json();
+  const supabase = createClient();
+
+  const { data: transactions, error } = await supabase
+    .from("transactions")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   const grouped = groupAnsSumTransactionByDate(transactions);
 
