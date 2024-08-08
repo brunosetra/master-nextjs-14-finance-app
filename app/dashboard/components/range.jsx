@@ -10,7 +10,7 @@ export default function Range() {
 
   return (
     <Select
-      defaultValue={range}
+      value={range}
       onChange={(e) => replace(`${pathname}?range=${e.target.value}`)}
     >
       <option value="last24hours">Last 24 hours</option>
