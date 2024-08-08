@@ -1,10 +1,8 @@
 import Trend from "@/components/trend";
+import { getTrendTotal } from "@/lib/actions";
 
-export default async function TrendItem({ type }) {
-  const response = await fetch(`${process.env.API_URL}/trends/${type}`, {
-    cache: "no-store",
-  });
-  const { amount, prevAmount } = await response.json();
+export default async function TrendItem({ type, range }) {
+  const { amount, prevAmount } = await getTrendTotal(type, range);
 
   return <Trend amount={amount} prevAmount={prevAmount} type={type} />;
 }
