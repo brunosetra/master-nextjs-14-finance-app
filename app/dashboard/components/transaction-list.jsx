@@ -9,7 +9,6 @@ import { useState } from "react";
 
 export default function TransactionList({ initialTransactions, range }) {
   const [transactions, setTransactions] = useState(initialTransactions);
-  const [offset, setOffset] = useState(initialTransactions?.length || 0);
   const [morePagesAvailable, setMorePagesAvailable] = useState(true);
 
   const [loadingData, setLoadingData] = useState(false);
@@ -20,7 +19,11 @@ export default function TransactionList({ initialTransactions, range }) {
     setLoadingData(true);
 
     try {
-      const fetchedTransactions = await findTransactions(range, offset, 10);
+      const fetchedTransactions = await findTransactions(
+        range,
+        transactions.length,
+        10
+      );
 
       fetchedTransactions.length > 0 &&
         setTransactions((prevTransactions) => [
@@ -29,10 +32,15 @@ export default function TransactionList({ initialTransactions, range }) {
         ]);
 
       setMorePagesAvailable(fetchedTransactions.length === 10);
-      setOffset(offset + fetchedTransactions.length);
     } finally {
       setLoadingData(false);
     }
+  };
+
+  const handleRemoved = (id) => {
+    setTransactions((prevTransactions) =>
+      [...prevTransactions].filter((transaction) => transaction.id !== id)
+    );
   };
 
   return (
@@ -44,7 +52,10 @@ export default function TransactionList({ initialTransactions, range }) {
           <section className="space-y-2">
             {transactions.map((transaction) => (
               <div key={transaction.id}>
-                <TransactionItem {...transaction} />
+                <TransactionItem
+                  {...transaction}
+                  onRemoved={() => handleRemoved(transaction.id)}
+                />
               </div>
             ))}
           </section>
