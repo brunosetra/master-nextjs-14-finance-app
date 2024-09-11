@@ -44,7 +44,7 @@ export default function TransactionForm({ initialData }) {
 
       router.push("/dashboard");
     } catch (error) {
-      setLastError(error);
+      setLastError(error?.message);
     } finally {
       setSaving(false);
     }
@@ -68,7 +68,7 @@ export default function TransactionForm({ initialData }) {
               <option key={type}>{type}</option>
             ))}
           </Select>
-          <FormError error={errors.type} />
+          <FormError error={errors.type?.message} />
         </div>
 
         <div>
@@ -79,25 +79,25 @@ export default function TransactionForm({ initialData }) {
               <option key={category}>{category}</option>
             ))}
           </Select>
-          <FormError error={errors.category} />
+          <FormError error={errors.category?.message} />
         </div>
 
         <div>
           <Label className="mb-1">Date</Label>
           <Input {...register("created_at")} disabled={editing} />
-          <FormError error={errors.created_at} />
+          <FormError error={errors.created_at?.message} />
         </div>
 
         <div>
           <Label className="mb-1">Amount</Label>
           <Input type="number" {...register("amount")} />
-          <FormError error={errors.amount} />
+          <FormError error={errors.amount?.message} />
         </div>
 
         <div className="col-span-1 md:col-span-2">
           <Label className="mb-1">Description</Label>
           <Input {...register("description")} />
-          <FormError error={errors.description} />
+          <FormError error={errors.description?.message} />
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+"";
 import Trend from "@/components/trend";
 import PageHeader from "@/components/page-header";
 import TransactionItem from "@/components/transaction-item";

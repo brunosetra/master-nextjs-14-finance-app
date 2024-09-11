@@ -2,10 +2,10 @@ import Link from "next/link";
 import DarkModeToggle from "./dark-mode";
 import useServerDarkMode from "@/hooks/use-server-dark-mode";
 import { createClient } from "@/lib/supabase/server";
-import Button from "./button";
 import { CircleUser, KeyRound } from "lucide-react";
 import { sizes, variants } from "@/lib/variants";
 import SignOutButton from "./sign-out-button";
+import Avatar from "./avatar";
 
 export default async function PageHeader({ className }) {
   const theme = useServerDarkMode();
@@ -29,14 +29,13 @@ export default async function PageHeader({ className }) {
         <DarkModeToggle defaultMode={theme} />
         {user && (
           <>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="flex items-center space-x-1"
+            <Link
+              className={`flex items-center space-x-1 ${variants["ghost"]} ${sizes["sm"]}`}
+              href="/dashboard/settings"
             >
-              <CircleUser className="w-6 h-6" />
-              <span>{user?.email}</span>
-            </Button>
+              <Avatar />
+              <span>{user?.user_metadata.fullName ?? user?.email}</span>
+            </Link>
             <SignOutButton />
           </>
         )}
